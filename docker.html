@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+<link rel="stylesheet" href="docker.css" />	  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <title>docker world</title>
+  </head>
+  <body background="docker_bg_pic.png">
+    <br />
+
+   <br /><br />
+    <input type="text" placeholder="Enter Docker Commands" id="in1" />
+            <br />
+	    <div class="wrapper">
+       	<button id="btn" onclick="f1();">click Me</button>
+        </div>
+      <pre>
+<div id="d1"><h4>Here we have output...</h4></div>
+
+</pre>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function f1() {
+        var i = document.getElementById("in1").value;
+        var x1 = new XMLHttpRequest();
+        x1.open("GET", "http://192.168.99.108/cgi-bin/dockr.py?x=" + i, true);
+        x1.send();
+        x1.onload = function () {
+          var output = x1.responseText;
+          console.log(output);
+          document.getElementById("d1").innerHTML = output;
+        };
+      }
+    </script>
+  </body>
+</html>
